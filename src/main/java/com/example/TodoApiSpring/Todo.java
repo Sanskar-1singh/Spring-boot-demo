@@ -1,0 +1,42 @@
+package com.example.TodoApiSpring;
+
+public class Todo {
+
+    private int id;
+
+    private boolean completed;
+
+    private String title;
+
+    public Todo(int id, boolean completed, String title) {
+       this.id = id;
+        this.completed = completed;
+        this.title = title;
+    }
+
+    private int userId;
+
+    public void setId(int id){
+        this.id=id;
+    }
+    public int getId(){
+        return id;
+    }
+
+    public void setCompleted(boolean completed){
+        this.completed=completed;
+    }
+    public boolean isCompleted(){
+        return completed;
+    }
+
+    public void setTitle(String title){
+        this.title=title;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+
+}
