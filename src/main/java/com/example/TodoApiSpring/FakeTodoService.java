@@ -11,7 +11,6 @@ public class FakeTodoService implements TodoService{
     @Override
     @TimeMonitor
     public String doSomething() {
-        for(long i=0;i<10000000000l;i++){}
         return "doSomething";
     }
 }

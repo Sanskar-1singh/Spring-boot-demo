@@ -43,5 +43,19 @@ public class TimeMonitorAspect {
  *
  * BEFORE/AFTER/AROUND
  *
+ * @Aspect is an annotation from AspectJ used in Spring to define cross-cutting concerns — logic
+ * that applies across multiple parts of your app (like logging, security, or transactions)
+ * without duplicating code.
+ *
+ *
+ *       Around(Around(function()))
+ *          ^     ^       ^
+ *          |     |       |
+ *          here 1st sround will get run and on jointProceed
+ *          it call second around and then on that joinProceed ti execute function
+ *
+ *
+ * NOTE->any reusable code that we  want to decouple and reuse at multiple place without direct
+ *    inheritence or composition we use AOP and for that we use @Aspect and @interface to create annotations
  *
  */
