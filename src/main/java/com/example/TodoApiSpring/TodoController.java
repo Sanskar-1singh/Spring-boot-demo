@@ -25,6 +25,7 @@ import java.util.List;
 public class TodoController {
 
 
+    private TodoRepo todoRepo;
     private TodoService todoService;
     private TodoService anotherTodoService;
     private static List<Todo> todos;
@@ -35,12 +36,14 @@ public class TodoController {
     //using IOC this is known as dependency injection>>
     public TodoController(
             @Qualifier("bye_bye") TodoService todoService,
-            @Qualifier("anotherTodoService") TodoService anotherTodoService) {
+            @Qualifier("anotherTodoService") TodoService anotherTodoService,
+            @Qualifier("todoRepo") TodoRepo todoRepo) {
         todos = new ArrayList<Todo>();
         todos.add(new Todo(12, true, "running"));
         todos.add(new Todo(12, true, "running"));
         this.todoService = todoService;
         this.anotherTodoService = anotherTodoService;
+        this.todoRepo = todoRepo;
 
 
     }
@@ -54,6 +57,8 @@ public class TodoController {
    //here we have send string as query params but it get converted to its is required type by spring boot
     public ResponseEntity<List<Todo>> getTodos(@RequestParam(required = false) Boolean isValid) {
         System.out.println(this.todoService.doSomething());
+        List<Example> x=todoRepo.findAll();
+        System.out.println(x);
         return ResponseEntity.ok(todos);
     }
 
@@ -96,6 +101,33 @@ public class TodoController {
  * @Qualifier->to include specific class
  * @Service->to tell spring manged it and it is service
  * @Respository->to tell spring mange and it is repo>>>>
+ *
+ *
+ */
+
+/**
+ *
+ * JDBC->java database connectivity
+ *
+ * it help in direct db interaction it directly uses jdbc to execute queries to a db queries are written
+ * as string,and then pass the in function exposed by JDBC it uses connection driver to connect to particular databases;
+ *
+ *
+ * JPA->java persistence API
+ *
+ * it is specification for accessing and persistating and managing data,btw objects ad relation tables;
+ * it provide abstraction layer between user and JDBC that instead of writting raw queries we can use class and
+ * object based syntax to interact with DB it consist of interface and annotations
+ *
+ * ORM->HIBERNATE
+ *
+ * it is cosnsits of class that impelement interafce and provide concrete impleemntation to interact with DB
+ * but later on it feel that there are some method which are used very frquently why not included those method
+ * and provide direct use of it to user so SPRING JPA DATA comes to the pictures
+ *
+ *
+ * (JDBC->JPA->HIBERNATE->ORM->SPRING JPA)
+ *
  *
  *
  */
